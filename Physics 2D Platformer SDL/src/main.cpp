@@ -2,7 +2,10 @@
 #include <SDL2/SDL_image.h>
 #include <iostream>
 #include <stdio.h>
+
 #include "RenderWindow.hpp"
+#include "Entity.hpp"
+
 using namespace std;
 int main(int argc, char* args[])
 {
@@ -11,9 +14,12 @@ int main(int argc, char* args[])
 
 	if(!(IMG_Init(IMG_INIT_PNG)))
 		cout<<"IMG_Init has failed. Error: "<<SDL_GetError()<<endl;
-	RenderWindow window("GAME v1.0",1280,720);
+	RenderWindow window("GAME v1.0",640,360);//640x360 //1280x720
 
-	SDL_Texture* WallTexture = window.loadTexture("res/gfx/Wall.png");
+	SDL_Texture* WallTexture = window.loadTexture("res/gfx/snake1-export.png");
+	
+	//float bob_x,bob_y;
+	//Entity bob;
 	//Game Loop
 	bool gameRunning = true;
 	SDL_Event WindowEvent;

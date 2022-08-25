@@ -14,12 +14,12 @@ int main(int argc, char* args[])
 
 	if(!(IMG_Init(IMG_INIT_PNG)))
 		cout<<"IMG_Init has failed. Error: "<<SDL_GetError()<<endl;
-	RenderWindow window("GAME v1.0",640,360);//640x360 //1280x720
+	RenderWindow window("GAME v1.0",640, 480);//640x360&480 wxh//1280x720
 
-	SDL_Texture* WallTexture = window.loadTexture("res/gfx/snake1-export.png");
+	SDL_Texture* SnakeTexture = window.loadTexture("res/gfx/brownsnake.png");
+
+	Entity snake(100,50,SnakeTexture);
 	
-	//float bob_x,bob_y;
-	//Entity bob;
 	//Game Loop
 	bool gameRunning = true;
 	SDL_Event WindowEvent;
@@ -32,11 +32,15 @@ int main(int argc, char* args[])
 				gameRunning = false;
 		}
 		window.Clear();
-		window.Render(WallTexture);
+
+		window.Render(snake);
+
 		window.Display();
 
 	}
+
 	window.CleanUp();
 	SDL_Quit();
+
 	return 0;
 }

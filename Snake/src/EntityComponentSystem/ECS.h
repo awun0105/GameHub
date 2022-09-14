@@ -10,8 +10,9 @@ using namespace std;
 
 class Component;
 class Entity;
-
+class Mangager;
 using ComponentID = size_t;
+using Group = size_t;
 
 inline ComponentID getComponentTypeID()
 {
@@ -41,12 +42,15 @@ public:
 class Entity
 {
 private:
+	//Manager& manager;
 	bool Active = true;
 	vector<unique_ptr<Component>>Components;
 
 	ComponentArray ComponentArray;
 	ComponentBitSet ComponentBitSet;
+	//GroupBitset groupBitset;
 public:
+	//Entity(Manager& mManager) : manager(mManager) {}
 	void Update()
 	{
 		for (auto& c : Components)c->Update();

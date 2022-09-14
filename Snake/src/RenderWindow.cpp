@@ -2,7 +2,7 @@
 #include "TextureManager.h"
 //#include "Map.h"
 #include "EntityComponentSystem/Component.h"
-
+#include "Vector2D.h"
 SDL_Renderer* RenderWindow::renderer = nullptr;
 
 Manager manager;
@@ -53,7 +53,7 @@ void RenderWindow::Init(const char* title, int xpos, int ypos, int width, int he
 	}
 	
 	//playerTex = TextureManager::LoadTexture("res/gfx/brownsnake.png", renderer);
-	Player.addComponent<PositionComponent>();
+	Player.addComponent<TransformComponent>();
 	Player.addComponent<SpriteComponent>("res/gfx/brownsnake.png");
 	
 }
@@ -76,8 +76,11 @@ void RenderWindow::Update()
 {
 	manager.Refresh();
 	manager.Update();
-	
-
+	Player.getComponent<TransformComponent>().position.Add(Vector2D(5, 0));
+	if (Player.getComponent<TransformComponent>().position.x > 100)
+	{
+		Player.getComponent < SpriteComponent>().setTex("res/gfx/hulking_knight.png");
+	}
 }
 
 void RenderWindow::Render()

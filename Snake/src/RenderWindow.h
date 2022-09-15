@@ -2,22 +2,19 @@
 #ifndef RenderWindow_h
 #define RenderWindow_h
 
-#include <stdio.h>
-#include <iostream>
-
 #include "SDL.h"
 #include "SDL_image.h"
+#include <stdio.h>
+#include <iostream>
 
 using namespace std;
 
 class RenderWindow
 {
 private:
-	int cnt;
-	bool isRunning;
+	int cnt = 0;
 	SDL_Window* window;
 	
-
 public:
 	RenderWindow();
 	~RenderWindow();
@@ -25,14 +22,14 @@ public:
 	//SDL_Texture* loadTexture(const char* p_filePath);
 	void handleEvents();
 	void Update();
+	bool running() { return isRunning; }
 	void Clear();
 	void Render();
-	//void Display();
 	void CleanUp();
 
-	bool running() { return isRunning; }
+	static bool isRunning;
 	static SDL_Renderer* renderer;
-
+	static SDL_Event event;
 
 };
 #endif

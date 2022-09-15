@@ -3,9 +3,12 @@
 //#include "Map.h"
 #include "EntityComponentSystem/Component.h"
 #include "Vector2D.h"
-SDL_Renderer* RenderWindow::renderer = nullptr;
 
 Manager manager;
+
+SDL_Renderer* RenderWindow::renderer = nullptr;
+SDL_Event RenderWindow::event;
+bool RenderWindow::isRunning = false;
 auto& Player(manager.addEntity());
 
 RenderWindow::RenderWindow()
@@ -55,11 +58,11 @@ void RenderWindow::Init(const char* title, int xpos, int ypos, int width, int he
 	//playerTex = TextureManager::LoadTexture("res/gfx/brownsnake.png", renderer);
 	Player.addComponent<TransformComponent>();
 	Player.addComponent<SpriteComponent>("res/gfx/brownsnake.png");
-	
+	Player.addComponent <keyboardController>();
 }
 void RenderWindow::handleEvents()
 {
-	SDL_Event event;
+	
 	SDL_PollEvent(&event);
 	switch (event.type)
 	{
@@ -76,11 +79,12 @@ void RenderWindow::Update()
 {
 	manager.Refresh();
 	manager.Update();
-	Player.getComponent<TransformComponent>().position.Add(Vector2D(5, 0));
-	if (Player.getComponent<TransformComponent>().position.x > 100)
+	
+	Player.getComponent<TransformComponent>().position.Add(Vector2D(2, 0));
+	/*if (Player.getComponent<TransformComponent>().position.x > 100)
 	{
 		Player.getComponent < SpriteComponent>().setTex("res/gfx/hulking_knight.png");
-	}
+	}*/
 }
 
 void RenderWindow::Render()

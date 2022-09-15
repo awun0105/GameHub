@@ -2,6 +2,7 @@
 
 #include "Component.h"
 #include "SDL.h"
+#include "../TextureManager.h"
 //draw itself on screen
 class SpriteComponent :public Component
 {

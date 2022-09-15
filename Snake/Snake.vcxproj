@@ -144,6 +144,7 @@
   <ItemGroup>
     <ClInclude Include="src\EntityComponentSystem\Component.h" />
     <ClInclude Include="src\EntityComponentSystem\ECS.h" />
+    <ClInclude Include="src\EntityComponentSystem\KeyboardController.h" />
     <ClInclude Include="src\EntityComponentSystem\TransformComponent.h" />
     <ClInclude Include="src\EntityComponentSystem\SpriteComponent.h" />
     <ClInclude Include="src\GameObject.h" />

@@ -11,6 +11,7 @@ using namespace std;
 class Component;
 class Entity;
 class Mangager;
+
 using ComponentID = size_t;
 using Group = size_t;
 

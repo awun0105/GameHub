@@ -10,7 +10,7 @@ SDL_Renderer* RenderWindow::renderer = nullptr;
 SDL_Event RenderWindow::event;
 bool RenderWindow::isRunning = false;
 auto& Player(manager.addEntity());
-
+//auto& ObjectTemp(manager.addEntity());
 RenderWindow::RenderWindow()
 {}
 RenderWindow::~RenderWindow()
@@ -39,7 +39,7 @@ void RenderWindow::Init(const char* title, int xpos, int ypos, int width, int he
 		renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 		if (renderer)
 		{
-			SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+			SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 			//SDL_RenderClear(renderer);
 			//SDL_RenderPresent(renderer);
 			cout << "renderer created!" << endl;
@@ -58,7 +58,8 @@ void RenderWindow::Init(const char* title, int xpos, int ypos, int width, int he
 	//playerTex = TextureManager::LoadTexture("res/gfx/brownsnake.png", renderer);
 	Player.addComponent<TransformComponent>();
 	Player.addComponent<SpriteComponent>("res/gfx/brownsnake.png");
-	Player.addComponent <keyboardController>();
+	//ObjectTemp.addComponent<SpriteComponent>("res/gfx/hulking_knight.png");
+	Player.addComponent<keyboardController>();
 }
 void RenderWindow::handleEvents()
 {
@@ -79,9 +80,9 @@ void RenderWindow::Update()
 {
 	manager.Refresh();
 	manager.Update();
-	
-	Player.getComponent<TransformComponent>().position.Add(Vector2D(2, 0));
-	/*if (Player.getComponent<TransformComponent>().position.x > 100)
+	//Player.addComponent<keyboardController>();
+	/*Player.getComponent<TransformComponent>().position.Add(Vector2D(2, 0));
+	if (Player.getComponent<TransformComponent>().position.x > 100)
 	{
 		Player.getComponent < SpriteComponent>().setTex("res/gfx/hulking_knight.png");
 	}*/

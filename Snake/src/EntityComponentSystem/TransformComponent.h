@@ -8,7 +8,13 @@ class TransformComponent : public Component
 public:
 	Vector2D position;
 	Vector2D velocity;
-	int speed = 1;
+	int speed = 3;
+
+	int height = 64;
+	int width = 64;
+	int scale = 1;
+
+
 	TransformComponent()
 	{
 		position.x = 0.0f;
@@ -18,6 +24,20 @@ public:
 	{
 		position.x = x;
 		position.y = y;
+	}
+	TransformComponent(int scle)
+	{
+		position.x = 0.0f;
+		position.y = 0.0f;
+		scale = scle;
+	}
+	TransformComponent(float x, float y, int h, int w, int scle)
+	{
+		position.x = x;
+		position.y = y;
+		height = h;
+		width = w;
+		scale = scle;
 	}
 	void Init()override
 	{

@@ -1,0 +1,4 @@
+1. SDL documents: https://wiki.libsdl.org/FrontPage
+2 .https://www.libsdl.org/release/SDL-1.2.15/docs/html/index.html
+3. https://documentation.help/SDL/guideinputkeyboard.html
+4. https://readthedocs.org/projects/sdl2-gfxutils-documentation/downloads/pdf/latest/

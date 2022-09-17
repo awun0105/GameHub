@@ -1,4 +1,0 @@
-﻿  RenderWindow.cpp
-C:\Dev\Snake\Snake\src\EntityComponentSystem\SpriteComponent.h(34,34): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Dev\Snake\Snake\src\EntityComponentSystem\SpriteComponent.h(35,35): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  Snake.vcxproj -> C:\Dev\Snake\x64\Debug\Snake.exe

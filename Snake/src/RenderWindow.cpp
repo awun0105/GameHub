@@ -3,14 +3,14 @@
 //#include "Map.h"
 #include "EntityComponentSystem/Component.h"
 #include "Vector2D.h"
-
+#include "Collision.h"
 Manager manager;
 
 SDL_Renderer* RenderWindow::renderer = nullptr;
 SDL_Event RenderWindow::event;
 bool RenderWindow::isRunning = false;
 auto& Player(manager.addEntity());
-//auto& ObjectTemp(manager.addEntity());
+auto& Wall(manager.addEntity());
 RenderWindow::RenderWindow()
 {}
 RenderWindow::~RenderWindow()
@@ -56,10 +56,14 @@ void RenderWindow::Init(const char* title, int xpos, int ypos, int width, int he
 	}
 	
 	//playerTex = TextureManager::LoadTexture("res/gfx/brownsnake.png", renderer);
-	Player.addComponent<TransformComponent>();
+	Player.addComponent<TransformComponent>(1);
 	Player.addComponent<SpriteComponent>("res/gfx/brownsnake.png");
-	//ObjectTemp.addComponent<SpriteComponent>("res/gfx/hulking_knight.png");
 	Player.addComponent<keyboardController>();
+	Player.addComponent<ColliderComponent>("Player");
+
+	Wall.addComponent<TransformComponent>(300.0f, 300.0f, 64, 35, 1);
+	Wall.addComponent<SpriteComponent>("res/gfx/hulking_knight.png");
+	Wall.addComponent<ColliderComponent>("Wall");
 }
 void RenderWindow::handleEvents()
 {
@@ -86,6 +90,10 @@ void RenderWindow::Update()
 	{
 		Player.getComponent < SpriteComponent>().setTex("res/gfx/hulking_knight.png");
 	}*/
+	if (Collision::AABB(Player.getComponent<ColliderComponent>().collider, Wall.getComponent<ColliderComponent>().collider))
+	{
+		cout << "Wall hit" << endl;
+	}
 }
 
 void RenderWindow::Render()
